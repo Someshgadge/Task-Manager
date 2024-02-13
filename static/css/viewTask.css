@@ -1,0 +1,67 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px; /* Added margin from all sides */
+    padding: 0;
+    background-color: #f4f4f4;
+    border: 1px solid #ccc; /* Added border for the page */
+    border-radius: 8px;
+}
+
+h2 {
+    text-align: center;
+    margin-top: 30px;
+    color: #333;
+}
+
+.table-container {
+    position: relative;
+    margin: 20px auto;
+    max-width: 600px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+.actions {
+    text-align: right;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+input[type="submit"] {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #c82333;
+}
+
+.add-task-link {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
