@@ -16,8 +16,8 @@ form {
     background-color: #ffffff;
     padding: 20px;
     border-radius: 8px;
-    border: 1px solid #ccc; /* Added border */
-    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1); /* Added box-shadow */
+    border: 1px solid #ccc; 
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1); 
 }
 
 label {
