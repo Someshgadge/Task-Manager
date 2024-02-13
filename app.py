@@ -18,6 +18,7 @@ class Task(db.Model):
     description = db.Column(db.Text)
 
 # Define login route
+@app.route('/', methods=['GET', 'POST'])
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
