@@ -4,17 +4,15 @@ from flask_jwt_extended import JWTManager, create_access_token
 from functools import wraps
 
 app = Flask(__name__)
-app.secret_key = 'your_secret_key'  # Required for session management
+app.secret_key = '6PKLIKZHbTB5Be27YCRNasYj1xROl-eQC2mvlgXV4JY'  
 
 # Configure JWT settings
-app.config['JWT_SECRET_KEY'] = 'super-secret'  # Change this to a secure key in production
+app.config['JWT_SECRET_KEY'] = 'super-secret'  
 jwt = JWTManager(app)
 
 # Configure SQLite database
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///your_database.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
-# Initialize SQLAlchemy
 db = SQLAlchemy(app)
 
 # Define Task model
@@ -39,10 +37,7 @@ def login():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
-
-        # Example authentication logic (replace with your actual authentication mechanism)
         if username == 'admin' and password == 'password':
-            # Store user session information (e.g., username) in session
             session['username'] = username
             return redirect(url_for('protected_area'))
         else:
@@ -56,15 +51,13 @@ def login():
 def protected_area():
     return redirect(url_for('add_task'))
 
-# Add Task route
+# ADD Task route
 @app.route('/add_task', methods=['GET', 'POST'])
 @login_required
 def add_task():
     if request.method == 'POST':
         title = request.form['title']
         description = request.form['description']
-
-        # Create new task and add it to the database
         task = Task(title=title, description=description)
         db.session.add(task)
         db.session.commit()
@@ -73,7 +66,7 @@ def add_task():
 
     return render_template('add_task.html')
 
-# Edit Task route
+# EDIT Task route
 @app.route('/edit_task/<int:task_id>', methods=['GET', 'POST'])
 @login_required
 def edit_task(task_id):
@@ -88,7 +81,7 @@ def edit_task(task_id):
 
     return render_template('edit_task.html', task=task)
 
-# Delete Task route
+# DELETE Task route
 @app.route('/delete_task/<int:task_id>', methods=['POST'])
 @login_required
 def delete_task(task_id):
@@ -97,7 +90,7 @@ def delete_task(task_id):
     db.session.commit()
     return redirect(url_for('view_tasks'))
 
-# View Tasks route
+# VIEW Tasks route
 @app.route('/view_tasks')
 @login_required
 def view_tasks():
@@ -110,9 +103,9 @@ def api_login():
     username = request.json.get('username', None)
     password = request.json.get('password', None)
 
-    # Example authentication logic (replace with your actual authentication mechanism)
+    
     if username == 'admin' and password == 'password':
-        # Create access token
+        
         access_token = create_access_token(identity=username)
         return jsonify(access_token=access_token), 200
     else:
@@ -120,8 +113,7 @@ def api_login():
 
 if __name__ == '__main__':
     with app.app_context():
-        # Create SQLite database file and tables
+        
         db.create_all()
 
-    # Run the Flask app
     app.run(debug=True)
