@@ -2,9 +2,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 20px;
     padding: 0;
-    background-color: #a3bed4be;
-    border: 1px solid #ccc;
-    border-radius: 8px;
+    background-color: #f4f4f4;
 }
 
 h2 {
@@ -14,15 +12,18 @@ h2 {
 }
 
 .table-container {
-    position: relative;
     margin: 20px auto;
-    max-width: 600px;
+    max-width: 800px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #000; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
-    background-color: #fff; 
 }
 
 th, td {
@@ -39,13 +40,22 @@ th {
     text-align: right;
 }
 
-a {
+.edit-link, .delete-form {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.edit-link {
     color: #007bff;
     text-decoration: none;
 }
 
-a:hover {
+.edit-link:hover {
     text-decoration: underline;
+}
+
+.delete-form {
+    margin: 0;
 }
 
 input[type="submit"] {
@@ -55,6 +65,7 @@ input[type="submit"] {
     padding: 5px 10px;
     border-radius: 3px;
     cursor: pointer;
+    transition: background-color 0.3s;
 }
 
 input[type="submit"]:hover {
@@ -62,7 +73,14 @@ input[type="submit"]:hover {
 }
 
 .add-task-link {
-    position: absolute;
-    top: 0;
-    right: 0;
+    display: block;
+    text-align: right;
+    margin-bottom: 10px;
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.add-task-link:hover {
+    text-decoration: underline;
 }

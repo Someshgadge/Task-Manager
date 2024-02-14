@@ -1,19 +1,20 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/login.css') }}">
 </head>
-<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/login.css') }}">
 <body>
-    <h2>Welcome to Task Management Portal</h2>
-    <form method="post" action="/login">
-        <h3><style>h3 { text-align: center; }</style>Login</h3>
-        <label for="username">Username:</label><br>
-        <input type="text" id="username" name="username"><br>
-        <label for="password">Password:</label><br>
-        <input type="password" id="password" name="password"><br>
-        <input type="submit" value="Login">
-    </form>
+    <div class="container">
+        <h2><b>Welcome to Portal</b></h2>
+        <form method="post" action="/login">
+            <h3><b>Login</b></h3>
+            <label for="username">Username:</label><br>
+            <input type="text" id="username" name="username" required><br>
+            <label for="password">Password:</label><br>
+            <input type="password" id="password" name="password" required><br>
+            <input type="submit" value="Login">
+        </form>
+    </div>
 </body>
 </html>
