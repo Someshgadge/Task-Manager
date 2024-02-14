@@ -32,9 +32,15 @@ def login_required(f):
 
 # Define login route
 @app.route('/', methods=['GET', 'POST'])
+def index():
+    if request.method == 'GET':
+        return render_template('index.html', message='Welcome to Task Management Portal')
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    if request.method == 'POST':
+    if request.method == 'GET':
+        return render_template('login.html', message='Click here to login')
+    elif request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
         if username == 'admin' and password == 'password':
@@ -42,8 +48,6 @@ def login():
             return redirect(url_for('protected_area'))
         else:
             return render_template('login.html', message='Invalid credentials. Please try again.')
-
-    return render_template('login.html')
 
 # Protected area route
 @app.route('/protected')
@@ -103,9 +107,7 @@ def api_login():
     username = request.json.get('username', None)
     password = request.json.get('password', None)
 
-    
     if username == 'admin' and password == 'password':
-        
         access_token = create_access_token(identity=username)
         return jsonify(access_token=access_token), 200
     else:
@@ -113,7 +115,6 @@ def api_login():
 
 if __name__ == '__main__':
     with app.app_context():
-        
         db.create_all()
 
     app.run(debug=True)
